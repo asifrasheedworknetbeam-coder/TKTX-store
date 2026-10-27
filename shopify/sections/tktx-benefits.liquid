@@ -1,0 +1,31 @@
+<style>.tktx-page-section{--paper:#ffffff;--ink:#000000;--gutter:2.45vw;--content-max:1400px;--ease:cubic-bezier(.22,1,.36,1);font-family:Arial,Helvetica,sans-serif}.tktx-page-section *{box-sizing:border-box}.tktx-page-section a{color:inherit;text-decoration:none}@media(max-width:760px){.tktx-page-section{--gutter:6vw}}</style>
+{{ 'home-sections.css' | asset_url | stylesheet_tag }}
+<div class="tktx-store tktx-page-section">
+    <section class="benefits-section" id="benefits-{{ section.id }}" aria-labelledby="benefits-title-{{ section.id }}">
+      <div class="page-container">
+        <p class="section-kicker center">ORIGINAL SINCE 1999</p>
+        <h2 id="benefits-title-{{ section.id }}" class="benefits-title">ORIGINAL TKTX NUMBING CREAM.</h2>
+        <div class="benefits-grid">
+          <article class="benefit"><div class="benefit-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h25v23H5zM30 21h7l6 8v6h-6M30 35H17M5 35H3M3 18h10M3 23h7"/><circle cx="12" cy="35" r="4"/><circle cx="34" cy="35" r="4"/><path d="M34 25h3l3 5h-6z"/></svg></div><h3>FREE DELIVERY</h3><p>For orders above €70</p></article>
+          <article class="benefit"><div class="benefit-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h38v27H30l-8 7v-7H5z"/><path d="m14 16 1.5 3.2 3.5.5-2.5 2.5.6 3.5-3.1-1.6-3.1 1.6.6-3.5L9 19.7l3.5-.5zM25 16l1.5 3.2 3.5.5-2.5 2.5.6 3.5-3.1-1.6-3.1 1.6.6-3.5-2.5-2.5 3.5-.5zM36 16l1.5 3.2 3.5.5-2.5 2.5.6 3.5-3.1-1.6-3.1 1.6.6-3.5-2.5-2.5 3.5-.5z" transform="translate(-1 0) scale(.97)"/></svg></div><h3>SATISFIED CUSTOMERS</h3><p>Customers rate 4.6/5</p></article>
+          <article class="benefit"><div class="benefit-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="18"/><ellipse cx="24" cy="24" rx="8" ry="18"/><path d="M6 24h36M10 13h28M10 35h28"/></svg></div><h3>SHIPPING WORLDWIDE</h3><p>We ship worldwide from our Europe warehouse</p></article>
+          <article class="benefit"><div class="benefit-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15h10l-1 23H6L5 15ZM19 6h10l-1 32h-8L19 6ZM33 11h10l-1 27h-8l-1-27ZM7 38h6v5H7zM21 38h6v5h-6zM35 38h6v5h-6zM5 19h10M19 10h10M33 15h10"/><path d="M9 25h2M23 20h2M37 24h2"/></svg></div><h3>MULTIPLE STRENGTHS</h3><p>A range of strengths to choose from</p></article>
+          <article class="benefit"><div class="benefit-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h13v13H7zM28 7h13v13H28zM7 28h13v13H7z"/><path d="M11 11h5v5h-5zM32 11h5v5h-5zM11 32h5v5h-5zM28 27h5v6h-5zM38 27h3v6M27 38h6v3M38 38h3v3M20 24h4M24 7v4M24 16v8M7 24h6M34 24v3M24 33v5"/></svg></div><h3>ANTI-FAKE QR CODE</h3><p>QR code on the box and tube</p></article>
+          <article class="benefit benefit-rating"><div class="benefit-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m24 5 5.5 11.1L42 18l-9 8.8 2.1 12.4L24 33.3l-11.1 5.9L15 26.8 6 18l12.5-1.9L24 5Z"/></svg></div><h3>4.7 / 5</h3><p>Based on 898 reviews</p></article>
+        </div>
+      </div>
+    </section>
+
+</div>
+{% schema %}
+{
+  "name": "TKTX benefits",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "TKTX benefits"
+    }
+  ]
+}
+{% endschema %}

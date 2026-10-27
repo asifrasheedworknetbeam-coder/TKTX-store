@@ -1,0 +1,43 @@
+
+/* Requested finishing: straight product corners and a subtle category outline. */
+.tktx-store .shop-card,.tktx-store .shop-card *{border-radius:0}
+.tktx-store .category-track .category-product{border:1px solid #0000001a;padding:12px 12px 21px;background:#ffffff}
+.tktx-store .category-track .category-product figcaption{padding-left:0;padding-right:0}
+.tktx-store .story-section .story-image{background:#ffffff}
+.tktx-store .story-section .story-image>img{object-fit:contain;object-position:center}
+.tktx-store .newsletter-panel{position:relative;isolation:isolate;overflow:hidden;border-radius:0;background:#000000;padding:55px 60px;gap:70px}
+.tktx-store .newsletter-panel::after{content:'';position:absolute;z-index:-1;right:5%;top:-35px;width:240px;height:240px;background:var(--newsletter-mark,url('assets/tktx-logo-light.svg')) center/contain no-repeat;opacity:.045;transform:rotate(12deg);pointer-events:none}
+.tktx-store .newsletter-panel h2{font-size:clamp(40px,4.5vw,64px);line-height:1;margin-bottom:20px}
+.tktx-store .newsletter-description{max-width:370px;color:#ffffff99}
+.tktx-store .newsletter-label{font-size:8px;color:#ffffff99;letter-spacing:.16em}
+.tktx-store .newsletter-input-row{gap:0;padding:6px;border:1px solid #ffffff38;background:#ffffff08}
+.tktx-store .newsletter-input{border:0;border-radius:0;background:transparent;padding:13px 12px;font-size:13px}
+.tktx-store .newsletter-submit{display:inline-flex;align-items:center;justify-content:center;gap:20px;padding:0 19px;min-height:44px;border-radius:0;background:#ffffff;color:#000000;border-color:#ffffff}
+.tktx-store .newsletter-submit>span{font-size:20px;font-weight:400}
+.tktx-store .newsletter-privacy{color:#ffffff80}
+.tktx-store .footer-main{grid-template-columns:.7fr 1.45fr 1.4fr .6fr;gap:45px}
+.tktx-store .footer-links ul{grid-template-columns:1fr 1fr;column-gap:22px;row-gap:13px}
+.tktx-store .footer-links a{font-size:11px}
+.tktx-store .footer-history h3{font:500 10px/1.5 TKTXMono,monospace;letter-spacing:.1em;margin:2px 0 19px}
+.tktx-store .footer-history p{font:12px/1.85 Arial,sans-serif;margin:0 0 12px;color:#00000099}
+.tktx-store .footer-authenticity img{display:block;width:100%;max-width:130px;height:auto}
+.tktx-store .footer-socials{display:flex;align-items:center;gap:11px;margin-top:27px}
+.tktx-store .footer-socials a{display:inline-flex;align-items:center;justify-content:center;width:21px;height:24px;color:#000000;transition:opacity .25s}
+.tktx-store .footer-socials a:hover{opacity:.55}
+.tktx-store .footer-socials svg{width:20px;height:20px}
+.tktx-store .footer-payments{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px;padding:4px 0 30px}
+.tktx-store .footer-payments>span{display:grid;place-items:center;width:66px;height:40px;background:#ffffff;border:1px solid #0000000f;padding:5px 8px}
+.tktx-store .footer-payments img{display:block;width:100%;height:100%;object-fit:contain}
+.tktx-store .footer-service{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:24px;font:11px/1.6 Arial,sans-serif;color:#00000099}
+.tktx-store .footer-language{display:flex;align-items:center;gap:9px}
+.tktx-store .footer-language svg{width:17px;height:17px}
+.tktx-store .footer-service>a{display:flex;align-items:center;gap:22px}
+@media(max-width:1100px){.tktx-store .footer-main{grid-template-columns:.65fr 1.3fr 1.4fr;gap:30px}.tktx-store .footer-authenticity{grid-column:1/-1;justify-self:center}.tktx-store .footer-authenticity img{width:95px}.tktx-store .newsletter-panel{padding:42px;gap:35px}}
+@media(max-width:760px){.tktx-store .newsletter-panel{padding:30px 24px;gap:28px}.tktx-store .newsletter-panel h2{font-size:44px}.tktx-store .newsletter-input-row{padding:4px}.tktx-store .newsletter-input{padding:12px 9px;font-size:12px}.tktx-store .newsletter-submit{gap:12px;padding:0 13px;min-height:41px}.tktx-store .footer-main{grid-template-columns:1fr;gap:32px}.tktx-store .footer-about{grid-column:auto}.tktx-store .footer-links ul{column-gap:25px;row-gap:14px}.tktx-store .footer-history h3{font-size:9px}.tktx-store .footer-authenticity{grid-column:auto;justify-self:start}.tktx-store .footer-authenticity img{width:90px}.tktx-store .footer-payments{gap:8px}.tktx-store .footer-payments>span{width:59px;height:35px;padding:4px 7px}.tktx-store .footer-service{align-items:flex-start;flex-direction:column;gap:16px;font-size:10px}.tktx-store .category-track .category-product{padding:9px 9px 18px}}
+
+.tktx-store .footer-payments svg{display:block;width:100%;height:100%}
+
+/* Clip the moving row at its sides without shaving off the bottom border. */
+.tktx-store .category-viewport{overflow:visible;clip-path:inset(-16px 0 -16px 0);padding-bottom:4px}
+.tktx-store .category-track{align-items:stretch;height:auto}
+.tktx-store .category-track .category-product{height:auto;border-bottom:1px solid #0000001a}

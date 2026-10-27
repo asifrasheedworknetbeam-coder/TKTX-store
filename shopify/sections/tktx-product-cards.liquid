@@ -1,0 +1,133 @@
+{{ 'footer-finish.css' | asset_url | stylesheet_tag }}
+<style>.tktx-page-section{--paper:#ffffff;--ink:#000000;--gutter:2.45vw;--content-max:1400px;--ease:cubic-bezier(.22,1,.36,1);font-family:Arial,Helvetica,sans-serif}.tktx-page-section *{box-sizing:border-box}.tktx-page-section a{color:inherit;text-decoration:none}@media(max-width:760px){.tktx-page-section{--gutter:6vw}}</style>
+{{ 'home-sections.css' | asset_url | stylesheet_tag }}
+<div class="tktx-store tktx-page-section">
+<section class="products-section" aria-labelledby="products-title-{{ section.id }}"><div class="page-container"><header class="products-heading"><div><p class="section-kicker">{{ section.settings.eyebrow | escape }}</p><h2 id="products-title-{{ section.id }}">{{ section.settings.heading | escape }}</h2></div></header><div class="shop-grid">
+{% if section.settings.products != blank %}{% for product in section.settings.products limit: 6 %}
+<article class="shop-card"><a class="shop-card-image" href="{{ product.url }}" aria-label="{{ product.title | escape }}"><span class="shop-card-badge">ORIGINAL TKTX</span><span class="shop-card-mark"><img src="{{ 'tktx-logo-dark.svg' | asset_url }}" alt="" width="30" height="30"></span>
+{% if section.settings.real_images and product.featured_image != blank %}{{ product.featured_image | image_url: width: 900 | image_tag: class: 'shop-packshot', loading: 'lazy', widths: '400,600,900', sizes: '(max-width: 560px) 88vw, (max-width: 900px) 44vw, 420px' }}{% else %}<img class="shop-packshot" src="{{ 'tktx-gold-studio.png' | asset_url }}" alt="TKTX Gold studio design preview" width="1254" height="1254" loading="lazy">{% endif %}</a>
+<div class="shop-card-body"><p class="shop-card-label">THE ORIGINAL COLLECTION</p><h3>{{ product.title | escape }}</h3><p class="shop-card-description">{{ product.type | escape }}</p><div class="shop-card-bottom"><span class="variant-pill">{{ product.price | money }}</span><a class="buy-button" href="{{ product.url }}">Shop now <span aria-hidden="true">↗</span></a></div></div></article>
+{% endfor %}{% else %}
+          <article class="shop-card">
+            <a class="shop-card-image" href="{{ routes.all_products_collection_url }}" aria-label="View TKTX BLUE">
+              <span class="shop-card-badge">ORIGINAL TKTX</span>
+              <span class="shop-card-mark"><img src="{{ 'tktx-logo-dark.svg' | asset_url }}" alt="" width="30" height="30"></span>
+              <img class="shop-packshot" src="{{ 'tktx-gold-studio.png' | asset_url }}" alt="TKTX Gold studio packshot used as the shared design preview" width="1254" height="1254" loading="lazy" decoding="async">
+            </a>
+            <div class="shop-card-body">
+              <p class="shop-card-label">THE ORIGINAL COLLECTION</p>
+              <h3>TKTX BLUE</h3>
+              <p class="shop-card-description">Blue TKTX numbing cream</p>
+              <p class="shop-card-meta">Classic · 1–2 Hours</p>
+              <div class="shop-card-bottom"><span class="variant-pill">20% BLUE</span><a class="buy-button" href="{{ routes.all_products_collection_url }}" aria-label="Shop TKTX BLUE">Shop now <span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+          <article class="shop-card">
+            <a class="shop-card-image" href="{{ routes.all_products_collection_url }}" aria-label="View TKTX WHITE">
+              <span class="shop-card-badge">ORIGINAL TKTX</span>
+              <span class="shop-card-mark"><img src="{{ 'tktx-logo-dark.svg' | asset_url }}" alt="" width="30" height="30"></span>
+              <img class="shop-packshot" src="{{ 'tktx-gold-studio.png' | asset_url }}" alt="TKTX Gold studio packshot used as the shared design preview" width="1254" height="1254" loading="lazy" decoding="async">
+            </a>
+            <div class="shop-card-body">
+              <p class="shop-card-label">THE ORIGINAL COLLECTION</p>
+              <h3>TKTX WHITE</h3>
+              <p class="shop-card-description">White TKTX numbing cream</p>
+              <p class="shop-card-meta">Strong · 2–3 Hours</p>
+              <div class="shop-card-bottom"><span class="variant-pill">35% WHITE</span><a class="buy-button" href="{{ routes.all_products_collection_url }}" aria-label="Shop TKTX WHITE">Shop now <span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+          <article class="shop-card">
+            <a class="shop-card-image" href="{{ routes.all_products_collection_url }}" aria-label="View TKTX GOLD">
+              <span class="shop-card-badge">ORIGINAL TKTX</span>
+              <span class="shop-card-mark"><img src="{{ 'tktx-logo-dark.svg' | asset_url }}" alt="" width="30" height="30"></span>
+              <img class="shop-packshot" src="{{ 'tktx-gold-studio.png' | asset_url }}" alt="TKTX Gold studio packshot used as the shared design preview" width="1254" height="1254" loading="lazy" decoding="async">
+            </a>
+            <div class="shop-card-body">
+              <p class="shop-card-label">THE ORIGINAL COLLECTION</p>
+              <h3>TKTX GOLD</h3>
+              <p class="shop-card-description">Gold TKTX numbing cream</p>
+              <p class="shop-card-meta">Extra Strong · 3–4 Hours</p>
+              <div class="shop-card-bottom"><span class="variant-pill">38% GOLD</span><a class="buy-button" href="{{ routes.all_products_collection_url }}" aria-label="Shop TKTX GOLD">Shop now <span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+          <article class="shop-card">
+            <a class="shop-card-image" href="{{ routes.all_products_collection_url }}" aria-label="View TKTX GREEN">
+              <span class="shop-card-badge">ORIGINAL TKTX</span>
+              <span class="shop-card-mark"><img src="{{ 'tktx-logo-dark.svg' | asset_url }}" alt="" width="30" height="30"></span>
+              <img class="shop-packshot" src="{{ 'tktx-gold-studio.png' | asset_url }}" alt="TKTX Gold studio packshot used as the shared design preview" width="1254" height="1254" loading="lazy" decoding="async">
+            </a>
+            <div class="shop-card-body">
+              <p class="shop-card-label">THE ORIGINAL COLLECTION</p>
+              <h3>TKTX GREEN</h3>
+              <p class="shop-card-description">Green TKTX numbing cream</p>
+              <p class="shop-card-meta">Extra Strong+ · 3–5 Hours</p>
+              <div class="shop-card-bottom"><span class="variant-pill">40% GREEN</span><a class="buy-button" href="{{ routes.all_products_collection_url }}" aria-label="Shop TKTX GREEN">Shop now <span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+          <article class="shop-card">
+            <a class="shop-card-image" href="{{ routes.all_products_collection_url }}" aria-label="View MITHRA">
+              <span class="shop-card-badge">ORIGINAL TKTX</span>
+              <span class="shop-card-mark"><img src="{{ 'tktx-logo-dark.svg' | asset_url }}" alt="" width="30" height="30"></span>
+              <img class="shop-packshot" src="{{ 'tktx-gold-studio.png' | asset_url }}" alt="TKTX Gold studio packshot used as the shared design preview" width="1254" height="1254" loading="lazy" decoding="async">
+            </a>
+            <div class="shop-card-body">
+              <p class="shop-card-label">THE ORIGINAL COLLECTION</p>
+              <h3>MITHRA</h3>
+              <p class="shop-card-description">Mithra numbing cream</p>
+              <p class="shop-card-meta">Extra Strong+ · 3.5–5.5 Hours</p>
+              <div class="shop-card-bottom"><span class="variant-pill">45% MITHRA</span><a class="buy-button" href="{{ routes.all_products_collection_url }}" aria-label="Shop MITHRA">Shop now <span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+          <article class="shop-card">
+            <a class="shop-card-image" href="{{ routes.all_products_collection_url }}" aria-label="View TKTX GOLD">
+              <span class="shop-card-badge">ORIGINAL TKTX</span>
+              <span class="shop-card-mark"><img src="{{ 'tktx-logo-dark.svg' | asset_url }}" alt="" width="30" height="30"></span>
+              <img class="shop-packshot" src="{{ 'tktx-gold-studio.png' | asset_url }}" alt="TKTX Gold studio packshot used as the shared design preview" width="1254" height="1254" loading="lazy" decoding="async">
+            </a>
+            <div class="shop-card-body">
+              <p class="shop-card-label">THE ORIGINAL COLLECTION</p>
+              <h3>TKTX GOLD</h3>
+              <p class="shop-card-description">Gold TKTX numbing cream</p>
+              <p class="shop-card-meta">Extra Strong · 3–4 Hours</p>
+              <div class="shop-card-bottom"><span class="variant-pill">38% GOLD</span><a class="buy-button" href="{{ routes.all_products_collection_url }}" aria-label="Shop TKTX GOLD">Shop now <span aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>{% endif %}
+</div></div></section>
+</div>
+{% schema %}
+{
+  "name": "TKTX product cards",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small introduction",
+      "default": "03 / FIND YOUR ORIGINAL"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "THE TKTX COLLECTION."
+    },
+    {
+      "type": "product_list",
+      "id": "products",
+      "label": "Choose six products",
+      "limit": 6
+    },
+    {
+      "type": "checkbox",
+      "id": "real_images",
+      "label": "Use each product’s actual image",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "TKTX product cards"
+    }
+  ]
+}
+{% endschema %}

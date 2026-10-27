@@ -1,0 +1,55 @@
+<style>.tktx-page-section{--paper:#ffffff;--ink:#000000;--gutter:2.45vw;--content-max:1400px;--ease:cubic-bezier(.22,1,.36,1);font-family:Arial,Helvetica,sans-serif}.tktx-page-section *{box-sizing:border-box}.tktx-page-section a{color:inherit;text-decoration:none}@media(max-width:760px){.tktx-page-section{--gutter:6vw}}</style>
+{{ 'home-sections.css' | asset_url | stylesheet_tag }}
+{{ 'footer-finish.css' | asset_url | stylesheet_tag }}
+<div class="tktx-store tktx-page-section" style="--newsletter-mark:url('{{ 'tktx-logo-light.svg' | asset_url }}')">
+    <footer class="site-footer" id="footer-{{ section.id }}" role="contentinfo">
+      <div class="page-container">
+        <div class="newsletter-panel">
+          <div class="newsletter-copy"><p class="section-kicker">OFFICIAL TKTX / SINCE 1999</p><h2>{{ section.settings.heading | escape }}</h2><p class="newsletter-description">{{ section.settings.newsletter_text | escape }}</p></div>
+          {% assign newsletter_id = 'Newsletter-' | append: section.id %}{% form 'customer', id: newsletter_id, class: 'newsletter-form' %}<input type="hidden" name="contact[tags]" value="newsletter">{% if form.posted_successfully? %}<p class="newsletter-feedback" role="status">Thank you for subscribing.</p>{% endif %}{% if form.errors %}<div class="newsletter-feedback" role="alert">{{ form.errors | default_errors }}</div>{% endif %}<label class="newsletter-label" for="newsletter-email-{{ section.id }}">YOUR EMAIL ADDRESS</label>
+            <div class="newsletter-input-row"><input class="newsletter-input" id="newsletter-email-{{ section.id }}" type="email" name="contact[email]" placeholder="Enter your email" autocomplete="email" required><button class="newsletter-submit" type="submit">Subscribe <span aria-hidden="true">↗</span></button></div>
+            <p class="newsletter-privacy">By subscribing, you agree to our <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}">Privacy Policy</a>.</p>
+          {% endform %}
+        </div>
+        <div class="footer-main">
+          <div class="footer-about"><a class="footer-brand" href="{{ routes.root_url }}" aria-label="TKTX home"><img src="{{ 'tktx-logo-dark.svg' | asset_url }}" alt="" width="42" height="42"><span class="footer-wordmark">TKTX<small>OFFICIAL · ORIGINAL</small></span></a><div class="footer-socials" aria-label="Social accounts"><a href="https://www.facebook.com/TKTX.Europe" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 21v-8h2.7l.4-3h-3.1V8c0-.9.3-1.5 1.6-1.5H18V3.8c-.4-.1-1.4-.2-2.5-.2-2.5 0-4.2 1.5-4.2 4.3V10H8.5v3h2.8v8z" fill="currentColor"/></svg></a><a href="https://www.instagram.com/tktx.europe" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.8" r="1" fill="currentColor"/></svg></a><a href="https://www.youtube.com/@tktx.co.europe/shorts" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4" fill="currentColor"/><path d="m10 9 6 3-6 3z" fill="#ffffff"/></svg></a><a href="https://x.com/TKTX_europe" aria-label="X" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h4.5L20 21h-4.5L4 3Zm16 0L4 21" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a><a href="https://www.tiktok.com/@tktx.europe" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v12.3a5 5 0 1 1-4-4.9v3a2 2 0 1 0 1 1.9V3h3c.5 2.7 2 4.1 5 4.5v3A9 9 0 0 1 14 9" fill="currentColor"/></svg></a></div></div>
+          <nav class="footer-column footer-links" aria-label="Footer links"><h3>LINKS</h3><ul>{% if section.settings.footer_menu != blank %}{% for link in section.settings.footer_menu.links %}<li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>{% endfor %}{% else %}<li><a href="/pages/certification">Certification</a></li><li><a href="/pages/contact">Contact</a></li><li><a href="{{ routes.all_products_collection_url }}">All products</a></li><li><a href="/pages/reviews">Reviews</a></li><li><a href="/blogs/news">Blog</a></li><li><a href="/pages/about-us">About us</a></li><li><a href="/pages/shipment-tracking">Shipment tracking</a></li><li><a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}">Privacy Policy</a></li><li><a href="/pages/faq">FAQ (Frequently Asked Questions)</a></li><li><a href="{{ shop.terms_of_service.url | default: '/policies/terms-of-service' }}">Terms of service</a></li><li><a href="{{ shop.refund_policy.url | default: '/policies/refund-policy' }}">Refund policy</a></li>{% endif %}</ul></nav>
+          <div class="footer-history"><h3>INTERNATIONAL SINCE 1999</h3><p>TKTX is being used worldwide since 1999, we started as a small company together with 3 friends who have background in tattoo’s and have now grown to a team of 29 divided in different regions!</p><p>All orders are being shipped from our logistic centers in Europe (Poland, Hungary, Romania &amp; Greece).</p></div>
+          <div class="footer-authenticity"><img src="{{ 'tktx-authentic-seal.avif' | asset_url }}" alt="TKTX 100% Authentic seal" width="150" height="180" loading="lazy"></div>
+        </div>
+        <div class="footer-payments" aria-label="Payment methods">{% if shop.enabled_payment_types.size > 0 %}{% for type in shop.enabled_payment_types %}<span>{{ type | payment_type_svg_tag: class: 'payment-icon' }}</span>{% endfor %}{% else %}<span><img src="{{ 'payment-paypal.webp' | asset_url }}" alt="PayPal" width="68" height="40" loading="lazy"></span><span><img src="{{ 'payment-visa.webp' | asset_url }}" alt="Visa" width="68" height="40" loading="lazy"></span><span><img src="{{ 'payment-mastercard.webp' | asset_url }}" alt="Mastercard" width="68" height="40" loading="lazy"></span><span><img src="{{ 'payment-ideal.webp' | asset_url }}" alt="iDEAL" width="68" height="40" loading="lazy"></span><span><img src="{{ 'payment-bancontact.webp' | asset_url }}" alt="Bancontact" width="68" height="40" loading="lazy"></span><span><img src="{{ 'payment-giropay.webp' | asset_url }}" alt="Giropay" width="68" height="40" loading="lazy"></span><span><img src="{{ 'payment-sofort.webp' | asset_url }}" alt="Sofort" width="68" height="40" loading="lazy"></span>{% endif %}</div>
+        <div class="footer-service"><span class="footer-language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg>English</span><a href="/pages/contact">What can I help you with? We speak all languages <span aria-hidden="true">↗</span></a></div>
+        <div class="footer-bottom"><span>© 1999–{{ 'now' | date: '%Y' }}, TKTX Official – Original</span><span>ORIGINAL TKTX / WWW.TKTX.CO</span></div>
+      </div>
+    </footer>
+</div>
+{% schema %}
+{
+  "name": "TKTX footer",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Newsletter heading",
+      "default": "NEWSLETTER."
+    },
+    {
+      "type": "text",
+      "id": "newsletter_text",
+      "label": "Newsletter description",
+      "default": "Subscribe to get offers, free giveaways, and once-in-a-lifetime deals."
+    },
+    {
+      "type": "link_list",
+      "id": "footer_menu",
+      "label": "Footer links"
+    }
+  ],
+  "presets": [
+    {
+      "name": "TKTX footer"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,349 @@
+{% comment %}TKTX single-screen hero. Upload the supplied assets and select the store's main menu in the theme editor.{% endcomment %}
+{% liquid
+  assign shop_link = section.settings.shop_link | default: routes.all_products_collection_url
+  assign reviews_link = section.settings.reviews_link | default: '/pages/reviews'
+%}
+<style>
+@font-face{font-family:TKTXAnton;src:url('{{ 'anton.ttf' | asset_url }}') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:TKTXMono;src:url('{{ 'roboto-mono.ttf' | asset_url }}') format('truetype');font-weight:500;font-style:normal;font-display:swap}
+.tktx-store{--paper:#ffffff;--ink:#000000;--gutter:2.45vw;--content-max:1400px;--content-edge:max(var(--gutter),calc((100% - var(--content-max))/2));--announcement-height:32px;--ease:cubic-bezier(.22,1,.36,1);color-scheme:dark;color:var(--paper);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+.tktx-store *{box-sizing:border-box}
+.tktx-store button,.tktx-store a{-webkit-tap-highlight-color:transparent}
+.tktx-store button{font:inherit;color:inherit;cursor:pointer}
+.tktx-store a{color:inherit;text-decoration:none}
+.tktx-store button:focus-visible,.tktx-store a:focus-visible,.tktx-store input:focus-visible{outline:2px solid var(--paper);outline-offset:5px}
+.tktx-store ::selection{color:var(--ink);background:var(--paper)}
+.tktx-store .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.tktx-store .hero{height:100vh;height:100svh;position:relative;isolation:isolate;overflow:hidden;background:var(--ink)}
+.tktx-store .announcement{position:absolute;top:0;left:0;right:0;z-index:10;height:var(--announcement-height);overflow:hidden;background:#000000;color:var(--paper);border-bottom:1px solid #ffffff13}
+.tktx-store .announcement-track{display:flex;width:max-content;height:var(--announcement-height);animation:tktx-marquee var(--marquee-duration,48s) linear infinite}
+.tktx-store .announcement-group{display:flex;flex-shrink:0;align-items:center;gap:16px;padding-right:16px;font:500 10px/var(--announcement-height) TKTXMono,monospace;letter-spacing:.14em;white-space:nowrap}
+.tktx-store .announcement-group i{font:normal 10px/1 Arial,sans-serif;opacity:.55}
+.tktx-store .announcement:hover .announcement-track{animation-play-state:paused}
+.tktx-store .hero-image{position:absolute;inset:var(--announcement-height) 0 0;z-index:-3;background:url('{{ 'cinematic-tattoo.png' | asset_url }}') center center/cover no-repeat;animation:tktx-photo-enter 1.8s var(--ease) both}
+.tktx-store .hero-shade{position:absolute;inset:var(--announcement-height) 0 0;z-index:-2;background:linear-gradient(90deg,#00000099,#00000045 36%,transparent 74%),linear-gradient(0deg,#00000038,transparent 24%)}
+.tktx-store .header{position:absolute;left:var(--content-edge);right:var(--content-edge);top:calc(var(--announcement-height) + 3vh);display:flex;justify-content:space-between;align-items:center;gap:24px;z-index:5;animation:tktx-fade-enter 1s .16s both}
+.tktx-store .brand{display:inline-flex;align-items:center;gap:12px;flex-shrink:0}
+.tktx-store .brand-mark{display:grid;place-items:center;width:54px;height:54px;background:var(--paper)}
+.tktx-store .brand-mark img{display:block;width:44px;height:44px;object-fit:contain;transition:transform .45s var(--ease)}
+.tktx-store .brand:hover img{transform:rotate(-9deg)}
+.tktx-store .brand-name{font:400 30px/1 TKTXAnton,Impact,sans-serif;letter-spacing:.035em}
+.tktx-store .brand-name>span{display:block;margin-top:7px;font:500 6px/1.2 TKTXMono,monospace;letter-spacing:.17em;white-space:nowrap}
+.tktx-store .desktop-nav{display:flex;align-items:center;gap:clamp(14px,1.55vw,28px)}
+.tktx-store .nav-link{padding:8px 0;border:0;font-size:clamp(10px,.83vw,14px);font-weight:600;position:relative;white-space:nowrap}
+.tktx-store .nav-link::after{content:'';position:absolute;left:0;right:0;bottom:2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.tktx-store .nav-link:hover::after,.tktx-store .nav-link.current::after{transform:scaleX(1)}
+.tktx-store .nav-link.current::after{opacity:.5}
+.tktx-store .header-tools{display:flex;align-items:center;gap:12px}
+.tktx-store .icon-link{display:inline-flex;align-items:center;justify-content:center;position:relative;flex-shrink:0;width:30px;height:36px;border:0;background:none;padding:3px;transition:opacity .25s}
+.tktx-store .icon-link:hover{opacity:.65}
+.tktx-store .icon-link svg{width:22px;height:22px}
+.tktx-store .cart-count{position:absolute;top:-1px;right:-3px;display:grid;place-items:center;min-width:13px;height:13px;border-radius:50%;font:500 8px/1 TKTXMono,monospace;background:var(--paper);color:var(--ink)}
+.tktx-store .button{min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:30px;border-radius:0;border:1px solid var(--paper);background:var(--paper);color:var(--ink);font-weight:600;font-size:clamp(12px,1.02vw,17px);padding:0 1.9vw;position:relative;transition:background .3s,color .3s,border-color .3s,transform .3s var(--ease)}
+.tktx-store .button:hover{background:#d3d3d3;border-color:#d3d3d3;transform:translateY(-2px)}
+.tktx-store .hero-copy{position:absolute;top:calc(var(--announcement-height) + 15vh);left:var(--content-edge);width:min(55%,770px);z-index:1}
+.tktx-store .eyebrow{margin:0;font:500 clamp(9px,.78vw,13px)/1.5 TKTXMono,monospace;letter-spacing:.2em;color:#9e9e9e}
+.tktx-store h1{font:400 min(11.1vw,155.4px,17.8vh)/.93 TKTXAnton,Impact,'Arial Narrow',sans-serif;letter-spacing:-.025em;margin:2.65vh 0;width:100%;text-transform:uppercase;color:var(--paper)}
+.tktx-store .line{display:block;white-space:nowrap;overflow:hidden;padding-bottom:.055em;margin-bottom:-.055em}
+.tktx-store .line>span{display:block;animation:tktx-line-enter 1.15s var(--ease) both;animation-delay:.12s}
+.tktx-store .line:nth-child(2)>span{animation-delay:.25s}
+.tktx-store .line:nth-child(3)>span{animation-delay:.38s}
+.tktx-store .description{font-size:clamp(13px,1.28vw,22px);line-height:1.48;color:#cfcfcf;margin:0 0 3.05vh;letter-spacing:-.012em;animation-delay:.6s!important}
+.tktx-store .actions{display:flex;gap:1.2vw;animation-delay:.75s!important}
+.tktx-store .actions .button{height:6.15vh;min-width:14.35vw}
+.tktx-store .secondary{background:#00000020;border-color:#ffffff59;color:var(--paper)}
+.tktx-store .secondary:hover{background:var(--paper);color:var(--ink)}
+.tktx-store .reveal{animation:tktx-fade-up 1s var(--ease) both}
+.tktx-store .hero-footer{position:absolute;bottom:0;left:var(--content-edge);right:var(--content-edge);height:8.45vh;min-height:46px;border-top:1px solid #ffffff2b;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:0 min(2.9vw,40px);font:500 clamp(8px,.72vw,12px)/1.4 TKTXMono,monospace;letter-spacing:.13em;white-space:nowrap;color:#bfbfbf;animation:tktx-fade-enter 1.2s .8s both}
+.tktx-store .store-status{display:flex;align-items:center;gap:.6vw;padding:10px 0;transition:color .3s}
+.tktx-store .store-status:hover{color:#ffffff}
+.tktx-store .store-status i{width:5px;height:5px;background:var(--paper);border-radius:100%;box-shadow:0 0 8px #ffffff40;animation:tktx-status-breathe 3s ease-in-out infinite}
+.tktx-store .menu-toggle,.tktx-store .mobile-nav{display:none}
+.tktx-store .search-panel{position:fixed;inset:0;margin:auto;width:min(620px,calc(100vw - 32px));max-height:85svh;overflow:auto;padding:55px 36px 36px;background:var(--ink);color:var(--paper);border:1px solid #505050;box-shadow:0 24px 100px #00000088}
+.tktx-store .search-panel::backdrop{background:#000000b8;backdrop-filter:blur(9px)}
+.tktx-store .search-panel[open]{animation:tktx-fade-up .45s var(--ease) both}
+.tktx-store .panel-close{position:absolute;top:14px;right:18px;font-size:30px;font-weight:300;background:none;border:0;line-height:1;padding:4px 8px}
+.tktx-store .search-panel h2{font:400 clamp(36px,5vw,58px)/1.05 TKTXAnton,sans-serif;letter-spacing:-.025em;margin:22px 0}
+.tktx-store .search-form{display:flex;gap:10px}
+.tktx-store .search-form input[type=search]{width:0;flex:1;min-width:0;padding:14px;border:1px solid #ffffff59;background:#ffffff05;border-radius:0;color:var(--paper);font:14px Arial,sans-serif}
+.tktx-store .search-form .button{padding:0 20px;font-size:13px}
+@keyframes tktx-marquee{to{transform:translateX(-50%)}}
+@keyframes tktx-line-enter{from{transform:translateY(115%)}to{transform:translateY(0)}}
+@keyframes tktx-fade-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes tktx-fade-enter{from{opacity:0}to{opacity:1}}
+@keyframes tktx-photo-enter{from{transform:scale(1.045);opacity:.3}to{transform:scale(1);opacity:1}}
+@keyframes tktx-status-breathe{50%{opacity:.4;box-shadow:0 0 0 transparent}}
+@media(min-width:1800px){.tktx-store .announcement-group{gap:16px;padding-right:16px;font-size:10px}.tktx-store .brand-mark{width:64px;height:64px}.tktx-store .brand-mark img{width:52px;height:52px}.tktx-store .brand-name{font-size:36px}}
+@media(min-aspect-ratio:2/1){.tktx-store .hero-image{background-size:100% auto;background-position:center 45%}.tktx-store .hero-copy{top:calc(var(--announcement-height) + 15vh)}.tktx-store h1{font-size:min(16.9vh,155.4px);margin:1.8vh 0}.tktx-store .description{font-size:1.9vh}.tktx-store .actions .button{min-height:36px}.tktx-store .hero-footer{min-height:38px}}
+@media(max-width:1100px){
+ .tktx-store .desktop-nav{display:none}
+ .tktx-store .menu-toggle{display:flex;flex-direction:column;justify-content:center;gap:6px;width:36px;height:36px;background:none;border:0;padding:5px}
+ .tktx-store .menu-toggle span{width:26px;height:1px;background:var(--paper);transition:transform .3s}
+ .tktx-store .menu-toggle[aria-expanded=true] span:first-child{transform:translateY(3.5px) rotate(45deg)}
+ .tktx-store .menu-toggle[aria-expanded=true] span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+ .tktx-store .mobile-nav{display:flex;position:absolute;inset:var(--announcement-height) 0 auto;z-index:4;max-height:calc(100svh - var(--announcement-height));overflow:auto;padding:110px 6vw 24px;background:#000000f7;backdrop-filter:blur(15px);flex-direction:column;transform:translateY(-110%);visibility:hidden;transition:transform .5s var(--ease),visibility .5s}
+ .tktx-store .mobile-nav.open{transform:translateY(0);visibility:visible}
+ .tktx-store .mobile-nav a{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #ffffff20;font:400 25px/1.15 TKTXAnton,sans-serif;text-transform:uppercase}
+}
+@media(max-width:760px){
+ .tktx-store{--gutter:6vw}
+ .tktx-store .announcement-group{gap:14px;padding-right:14px;font-size:9px;letter-spacing:.1em}
+ .tktx-store .hero-image{background-position:54% center}
+ .tktx-store .hero-shade{background:linear-gradient(90deg,#000000b0,#00000059 65%,#0000001f),linear-gradient(0deg,#000000a6,transparent 45%)}
+ .tktx-store .header{top:calc(var(--announcement-height) + 24px);gap:12px}
+ .tktx-store .brand{gap:9px}
+ .tktx-store .brand-mark{width:44px;height:44px}
+ .tktx-store .brand-mark img{width:36px;height:36px}
+ .tktx-store .brand-name{font-size:26px}
+ .tktx-store .brand-name>span{font-size:5px;margin-top:5px}
+ .tktx-store .header-tools{gap:8px}
+ .tktx-store .account-link{display:none}
+ .tktx-store .hero-copy{top:calc(var(--announcement-height) + 18%);width:88%}
+ .tktx-store .eyebrow{font-size:8px;letter-spacing:.16em}
+ .tktx-store h1{font-size:min(22vw,15.9svh);line-height:.98;margin:24px 0 25px;letter-spacing:-.03em}
+ .tktx-store .description{font-size:13px;line-height:1.6;margin-bottom:24px}
+ .tktx-store .actions{gap:10px}
+ .tktx-store .actions .button{font-size:11px;min-width:135px;padding:0 18px;height:46px;gap:22px}
+ .tktx-store .hero-footer{height:95px;display:grid;grid-template-columns:1fr 1fr;gap:13px 8px;align-content:center;padding:12px 0;font-size:7px;letter-spacing:.08em}
+ .tktx-store .hero-footer>span:first-child{grid-column:1/-1}
+ .tktx-store .store-status{justify-self:end;padding:0;gap:7px;font-size:7px}
+ .tktx-store .store-status i{height:4px;width:4px}
+ .tktx-store .search-panel{padding:50px 22px 26px}
+}
+@media(max-width:380px){.tktx-store .brand-name>span{display:none}.tktx-store .header-tools{gap:4px}.tktx-store .hero-footer,.tktx-store .store-status{font-size:6px}}
+@media(max-width:760px) and (max-height:740px){
+ .tktx-store .hero-copy{top:calc(var(--announcement-height) + 14%)}
+ .tktx-store h1{font-size:min(22vw,11.2svh);line-height:.94;margin:1.8svh 0}
+ .tktx-store .description{font-size:12px;line-height:1.45;margin-bottom:2svh}
+ .tktx-store .actions .button{height:40px;min-height:40px}
+ .tktx-store .hero-footer{height:65px;row-gap:8px}
+ .tktx-store .header{top:calc(var(--announcement-height) + 18px)}
+ .tktx-store .mobile-nav{padding-top:82px}
+ .tktx-store .mobile-nav a{font-size:21px;padding:9px 0}
+}
+@media(prefers-reduced-motion:reduce){
+ .tktx-store *,.tktx-store *::before,.tktx-store *::after{animation:none!important;transition:none!important}
+}
+
+{% if section.settings.background != blank %}#tktx-{{ section.id }} .hero-image{background-image:url('{{ section.settings.background | image_url: width: 2800 }}')}{% endif %}
+</style>
+<div class="tktx-store" id="tktx-{{ section.id }}">
+    <section class="hero" aria-labelledby="hero-title-{{ section.id }}">
+      <div class="announcement" role="region" aria-label="Store announcements">
+        <p class="sr-only">{{ section.settings.announcement_1 | escape }}. {{ section.settings.announcement_2 | escape }}. {{ section.settings.announcement_3 | escape }}.</p>
+        <div class="announcement-track" aria-hidden="true">
+          <div class="announcement-group"><span>{{ section.settings.announcement_1 | escape }}</span><i>✦</i><span>{{ section.settings.announcement_2 | escape }}</span><i>✦</i><span>{{ section.settings.announcement_3 | escape }}</span><i>✦</i></div>
+          <div class="announcement-group"><span>{{ section.settings.announcement_1 | escape }}</span><i>✦</i><span>{{ section.settings.announcement_2 | escape }}</span><i>✦</i><span>{{ section.settings.announcement_3 | escape }}</span><i>✦</i></div>
+        </div>
+      </div>
+      <div class="hero-image" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <header class="header">
+        <a class="brand" href="{{ routes.root_url }}" aria-label="TKTX home">
+          <span class="brand-mark"><img src="{{ 'tktx-logo-dark.svg' | asset_url }}" alt="" width="44" height="44" loading="eager"></span>
+          <span class="brand-name">TKTX<span>OFFICIAL · ORIGINAL</span></span>
+        </a>
+        <nav class="desktop-nav" aria-label="Main navigation">{% if section.settings.menu != blank %}{% for link in section.settings.menu.links %}<a class="nav-link{% if link.current %} current{% endif %}" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>{% endfor %}{% else %}
+<a class="nav-link" href="{{ routes.root_url }}">Home</a>
+<a class="nav-link" href="{{ shop_link }}">Shop</a>
+<a class="nav-link" href="/pages/faq-frequently-asked-questions">FAQ</a>
+<a class="nav-link" href="{{ reviews_link }}">Reviews</a>
+<a class="nav-link" href="/pages/contact">Contact</a>
+<a class="nav-link" href="/pages/certification">Certification</a>
+<a class="nav-link" href="/pages/fake-tktx">Authentic TKTX?</a>
+<a class="nav-link" href="/pages/about-us">About us</a>
+<a class="nav-link" href="/blogs/news">Blog</a>
+{% endif %}</nav>
+        <div class="header-tools">
+          <button class="icon-link search-toggle" aria-label="Search products" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="10.75" cy="10.75" r="6.75"/><path d="m16 16 5 5"/></svg></button>
+          {% if shop.customer_accounts_enabled %}<a class="icon-link account-link" href="{{ routes.account_url }}" aria-label="Your account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 21v-1.5a7.5 7.5 0 0 1 15 0V21"/></svg></a>{% endif %}
+          <a class="icon-link cart-link" href="{{ routes.cart_url }}" aria-label="Shopping bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 7.5h14l1 13H4l1-13Z"/><path d="M8.5 8V6a3.5 3.5 0 0 1 7 0v2"/></svg><span class="cart-count">{{ cart.item_count }}</span></a>
+          <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav-{{ section.id }}" aria-label="Open menu"><span></span><span></span></button>
+        </div>
+      </header>
+      <div class="hero-copy">
+        <p class="eyebrow reveal">{{ section.settings.eyebrow | escape }}</p>
+        <h1 id="hero-title-{{ section.id }}" aria-label="{{ section.settings.heading_1 | escape }} {{ section.settings.heading_2 | escape }} {{ section.settings.heading_3 | escape }}">
+          <span class="line"><span>{{ section.settings.heading_1 | escape }}</span></span>
+          <span class="line"><span>{{ section.settings.heading_2 | escape }}</span></span>
+          <span class="line"><span>{{ section.settings.heading_3 | escape }}</span></span>
+        </h1>
+        <p class="description reveal">{{ section.settings.description | escape | newline_to_br }}</p>
+        <div class="actions reveal">
+          <a class="button primary" href="{{ shop_link }}">Shop now <span aria-hidden="true">↗</span></a>
+          <a class="button secondary" href="{{ reviews_link }}">Reviews</a>
+        </div>
+      </div>
+      <footer class="hero-footer">
+        <span>OFFICIAL FACTORY STORE · SINCE 1999</span>
+        <span>SHIPPED NEXT DAY FROM EUROPE</span>
+        <a class="store-status" href="{{ shop_link }}"><i aria-hidden="true"></i> ORIGINAL TKTX · SHOP NOW</a>
+      </footer>
+      <nav id="mobile-nav-{{ section.id }}" class="mobile-nav-{{ section.id }}" aria-label="Mobile navigation" inert>{% if section.settings.menu != blank %}{% for link in section.settings.menu.links %}<a class="nav-link{% if link.current %} current{% endif %}" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>{% endfor %}{% else %}
+<a class="nav-link" href="{{ routes.root_url }}">Home</a>
+<a class="nav-link" href="{{ shop_link }}">Shop</a>
+<a class="nav-link" href="/pages/faq-frequently-asked-questions">FAQ</a>
+<a class="nav-link" href="{{ reviews_link }}">Reviews</a>
+<a class="nav-link" href="/pages/contact">Contact</a>
+<a class="nav-link" href="/pages/certification">Certification</a>
+<a class="nav-link" href="/pages/fake-tktx">Authentic TKTX?</a>
+<a class="nav-link" href="/pages/about-us">About us</a>
+<a class="nav-link" href="/blogs/news">Blog</a>
+{% endif %}</nav>
+    </section>
+  <dialog class="search-panel-{{ section.id }}" id="search-panel-{{ section.id }}" aria-labelledby="search-title-{{ section.id }}">
+    <button class="panel-close" aria-label="Close search">×</button>
+    <p class="eyebrow">TKTX OFFICIAL · ORIGINAL STORE</p>
+    <h2 id="search-title-{{ section.id }}">FIND YOUR TKTX.</h2>
+    <form action="{{ routes.search_url }}" method="get" class="search-form">
+      <label class="sr-only" for="product-search-{{ section.id }}">Search products</label>
+      <input id="product-search-{{ section.id }}" type="search" name="q" placeholder="Search products…" required>
+      <input type="hidden" name="type" value="product">
+      <button class="button" type="submit">Search ↗</button>
+    </form>
+  </dialog>
+  <script>
+(() => {
+  const root = document.currentScript.closest('.tktx-store');
+  const fitAnnouncements = (root) => {
+    const bar = root.querySelector('.announcement');
+    const track = root.querySelector('.announcement-track');
+    const groups = [...track.querySelectorAll('.announcement-group')];
+    const unit = groups[0].innerHTML;
+    const fit = () => {
+      groups[0].innerHTML = unit;
+      const unitWidth = groups[0].getBoundingClientRect().width;
+      if (!unitWidth) return;
+      const count = Math.max(2, Math.ceil(bar.clientWidth / unitWidth) + 1);
+      groups.forEach(group => { group.innerHTML = unit.repeat(count); });
+      track.style.setProperty('--marquee-duration', (unitWidth * count / 38) + 's');
+    };
+    fit();
+    document.fonts.ready.then(fit);
+    const observer = new ResizeObserver(fit);
+    observer.observe(bar);
+    document.addEventListener('shopify:section:unload', event => {
+      if (event.target.contains(root)) observer.disconnect();
+    });
+  };
+  fitAnnouncements(root);
+  const menuToggle = root.querySelector('.menu-toggle');
+  const mobileNav = root.querySelector('.mobile-nav');
+  const dialog = root.querySelector('.search-panel');
+  const closeMenu = () => {
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Open menu');
+    mobileNav.classList.remove('open');
+    mobileNav.inert = true;
+  };
+  menuToggle.addEventListener('click', () => {
+    const open = menuToggle.getAttribute('aria-expanded') !== 'true';
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    mobileNav.classList.toggle('open', open);
+    mobileNav.inert = !open;
+    if (open) mobileNav.querySelector('a').focus();
+  });
+  mobileNav.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
+  root.querySelector('.search-toggle').addEventListener('click', () => { closeMenu(); dialog.showModal(); });
+  root.querySelector('.panel-close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && mobileNav.classList.contains('open')) { closeMenu(); menuToggle.focus(); }
+    if (event.key === 'Tab' && mobileNav.classList.contains('open')) {
+      const links = [...mobileNav.querySelectorAll('a')];
+      if (event.shiftKey && document.activeElement === links[0]) { event.preventDefault(); menuToggle.focus(); }
+      else if (!event.shiftKey && document.activeElement === links.at(-1)) { event.preventDefault(); menuToggle.focus(); }
+      else if (document.activeElement === menuToggle) { event.preventDefault(); links[event.shiftKey ? links.length - 1 : 0].focus(); }
+    }
+  });
+  matchMedia('(min-width: 1101px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
+})();
+</script>
+</div>
+{% schema %}
+{
+  "name": "TKTX editorial banner",
+  "tag": "section",
+  "class": "tktx-banner-section",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main menu"
+    },
+    {
+      "type": "url",
+      "id": "shop_link",
+      "label": "Shop button link"
+    },
+    {
+      "type": "url",
+      "id": "reviews_link",
+      "label": "Reviews button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "background",
+      "label": "Banner photograph"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small introduction",
+      "default": "OFFICIAL FACTORY STORE · SINCE 1999"
+    },
+    {
+      "type": "text",
+      "id": "heading_1",
+      "label": "Headline — first line",
+      "default": "TKTX"
+    },
+    {
+      "type": "text",
+      "id": "heading_2",
+      "label": "Headline — second line",
+      "default": "ORIGINAL"
+    },
+    {
+      "type": "text",
+      "id": "heading_3",
+      "label": "Headline — third line",
+      "default": "STORE."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Original TKTX numbing cream.\nShipped next day from Europe."
+    },
+    {
+      "type": "text",
+      "id": "announcement_1",
+      "label": "Announcement 1",
+      "default": "FREE DELIVERY FROM €70"
+    },
+    {
+      "type": "text",
+      "id": "announcement_2",
+      "label": "Announcement 2",
+      "default": "CUSTOMERS RATE 4.6/5"
+    },
+    {
+      "type": "text",
+      "id": "announcement_3",
+      "label": "Announcement 3",
+      "default": "SHIPPING WORLDWIDE FROM EUROPE"
+    }
+  ],
+  "presets": [
+    {
+      "name": "TKTX editorial banner"
+    }
+  ]
+}
+{% endschema %}

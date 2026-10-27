@@ -1,0 +1,108 @@
+<style>.tktx-page-section{--paper:#ffffff;--ink:#000000;--gutter:2.45vw;--content-max:1400px;--ease:cubic-bezier(.22,1,.36,1);font-family:Arial,Helvetica,sans-serif}.tktx-page-section *{box-sizing:border-box}.tktx-page-section a{color:inherit;text-decoration:none}@media(max-width:760px){.tktx-page-section{--gutter:6vw}}</style>
+{{ 'home-sections.css' | asset_url | stylesheet_tag }}
+<div class="tktx-store tktx-page-section">
+<section class="faq-section" id="faq-{{ section.id }}" aria-labelledby="faq-title-{{ section.id }}">
+<div class="page-container"><header class="faq-heading"><p class="section-kicker">{{ section.settings.eyebrow | escape }}</p><h2 id="faq-title-{{ section.id }}">{{ section.settings.heading | escape }}</h2></header>
+<div class="faq-list">{% for block in section.blocks %}<details class="faq-item" name="tktx-faq-{{ section.id }}"{% if forloop.first %} open{% endif %} {{ block.shopify_attributes }}><summary><span class="faq-number">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span><span>{{ block.settings.question | escape }}</span><span class="faq-toggle" aria-hidden="true"></span></summary><div class="faq-answer">{{ block.settings.answer }}</div></details>{% endfor %}</div>
+<div class="faq-contact"><p>Have any other questions?</p><a class="dark-button" href="{{ section.settings.contact_link | default: '/pages/contact' }}">Contact us <span aria-hidden="true">↗</span></a></div></div></section>
+</div>
+{% schema %}
+{
+  "name": "TKTX FAQ",
+  "tag": "section",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small introduction",
+      "default": "05 / A LITTLE CLARITY"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "COMMON QUESTIONS."
+    },
+    {
+      "type": "url",
+      "id": "contact_link",
+      "label": "Contact link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "TKTX FAQ",
+      "blocks": [
+        {
+          "type": "question",
+          "settings": {
+            "question": "How do I know these are original? There are so many websites claiming they are the original.",
+            "answer": "<p>Check the QR code on the box and tube, the golden seal and the website printed on the tube. Our website is tktx.co and our social account is @tktx.europe.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "My order is stuck on “at shippers warehouse” or “waiting to be shipped”.",
+            "answer": "<p>Tracking updates when the parcel reaches your country. If you have received a tracking number, your order is on its way.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "EUROPEAN UNION: Do I have to pay VAT/TAX?",
+            "answer": "<p>It is included. Orders ship from within Europe.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "OUTSIDE EU: Do I have to pay VAT/TAX?",
+            "answer": "<p>Charges depend on your local government’s rules. Contact us if you need help with your order.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "What is the difference between the percentages and colors?",
+            "answer": "<p>The versions are Blue 20%, White 35%, Gold 38%, Green 40% and Mithra 45%. See the product page for each option. Times can vary by person and application area.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "What is the difference between MITHRA+ and TKTX?",
+            "answer": "<p>The companies have joined. Mithra+ has a thicker pink cream; TKTX has a white cream.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "For which applications can I use TKTX or Mithra numbing cream?",
+            "answer": "<p>The site lists tattooing, piercing, waxing, laser procedures, permanent make-up and microblading. Read the full product information and FAQ for details.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

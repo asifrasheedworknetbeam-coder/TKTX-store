@@ -1,0 +1,36 @@
+body.product-body{margin:0}
+.tktx-store .catalog-price{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:20px 0 0;color:#111;font:16px/1.4 Arial,sans-serif}
+.tktx-store .catalog-price del{color:#8b8b8b;font-size:13px}
+.tktx-store .stock-label{margin-left:auto;padding:5px 9px;border:1px solid #ddd;border-radius:20px;font:10px/1.3 TKTXMono,monospace;color:#777}
+.tktx-store .stock-label.available{border-color:#c7ddce;background:#f1f8f3;color:#28603a}
+.tktx-store .catalog-note{margin:24px 0 0;font:11px/1.7 Arial,sans-serif;color:#777}
+.tktx-store .category-product-stage img{object-fit:contain;mix-blend-mode:multiply}
+.tktx-store.product-page{background:white;color:black;color-scheme:light}
+.tktx-store .product-page-hero{height:145px;min-height:0;overflow:visible;z-index:10}
+.tktx-store .product-page-hero .header{color:white}
+.tktx-store .product-detail{padding-top:34px;padding-bottom:90px}
+.tktx-store .product-breadcrumb{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:34px;font:10px/1.6 TKTXMono,monospace;color:#777}
+.tktx-store .product-breadcrumb a:hover{text-decoration:underline}
+.tktx-store .product-layout{display:grid;grid-template-columns:1.1fr 1fr;align-items:start;gap:clamp(32px,5vw,80px)}
+.tktx-store .product-gallery{position:relative;display:grid;place-items:center;aspect-ratio:1;background:#f8f8f8;border:1px solid #eee;border-radius:22px;overflow:hidden}
+.tktx-store .product-gallery>img{display:block;width:92%;height:92%;object-fit:contain;mix-blend-mode:multiply}
+.tktx-store .detail-category{position:absolute;top:24px;left:24px;font:9px/1.5 TKTXMono,monospace;letter-spacing:.12em;color:#666}
+.tktx-store .product-copy{padding:20px 0}
+.tktx-store .product-copy h1{font:400 clamp(42px,5vw,72px)/1.05 TKTXAnton,Impact,sans-serif;letter-spacing:-.025em;color:#111;margin:0 0 16px}
+.tktx-store .detail-subtitle{font:17px/1.5 Arial,sans-serif;color:#666;margin:0 0 20px}
+.tktx-store .detail-price{font-size:25px;margin:0 0 28px}
+.tktx-store .detail-price del{font-size:18px}
+.tktx-store .detail-price .stock-label{margin-left:5px}
+.tktx-store .detail-description{font:14px/1.9 Arial,sans-serif;color:#666;margin:0 0 30px;max-width:530px}
+.tktx-store .option-label{font:9px/1.5 TKTXMono,monospace;letter-spacing:.1em;color:#777;margin:0 0 12px}
+.tktx-store .product-options{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.tktx-store .product-option{border:1px solid #ddd;border-radius:5px;padding:12px;font:10px/1.3 TKTXMono,monospace;transition:background .2s,color .2s}
+.tktx-store .product-option:hover,.tktx-store .product-option.selected{background:#111;color:#fff;border-color:#111}
+.tktx-store .product-specs{border-top:1px solid #e7e7e7;margin:0 0 28px}
+.tktx-store .product-specs>div{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid #e7e7e7;font:12px/1.5 Arial,sans-serif}
+.tktx-store .product-specs dt{color:#777}
+.tktx-store .product-specs dd{margin:0;text-align:right}
+.tktx-store .official-product-link{width:100%;justify-content:space-between}
+.tktx-store.product-page a:focus-visible{outline:2px solid #777;outline-offset:4px}
+@media(max-width:900px){.tktx-store .product-layout{grid-template-columns:1fr 1fr;gap:28px}.tktx-store .product-copy{padding:0}.tktx-store .product-copy h1{font-size:42px}.tktx-store .product-page-hero{height:130px}}
+@media(max-width:650px){.tktx-store .product-layout{grid-template-columns:1fr;gap:30px}.tktx-store .product-detail{padding-top:24px;padding-bottom:55px}.tktx-store .product-gallery{border-radius:14px}.tktx-store .product-copy h1{font-size:48px}.tktx-store .detail-price{font-size:24px}.tktx-store .product-breadcrumb{margin-bottom:24px}.tktx-store .shop-card-bottom{gap:6px}.tktx-store .buy-button{font-size:11px;padding-left:13px}}

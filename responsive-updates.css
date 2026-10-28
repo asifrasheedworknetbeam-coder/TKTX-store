@@ -1,0 +1,259 @@
+/* Center the banner copy vertically between the header and bottom strip. */
+.tktx-store .hero:not(.product-page-hero) {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: auto;
+  min-height: 100svh;
+  padding: calc(var(--announcement-height) + 110px) 0 0;
+}
+.tktx-store .hero:not(.product-page-hero) .hero-copy {
+  align-self: flex-start;
+  margin: auto var(--content-edge);
+  padding: 24px 0;
+  text-align: left;
+}
+.tktx-store .hero:not(.product-page-hero) .actions {
+  justify-content: flex-start;
+}
+.tktx-store .hero:not(.product-page-hero) .hero-footer {
+  margin-top: 0;
+}
+@media (max-width: 760px) {
+  .tktx-store .hero:not(.product-page-hero) {
+    padding-top: calc(var(--announcement-height) + 92px);
+  }
+  .tktx-store .hero:not(.product-page-hero) .hero-copy {
+    width: calc(100% - 2 * var(--content-edge));
+  }
+}
+
+/* A scrollable review track, with two cards on desktop and one on phones. */
+.tktx-store .customer-stories-grid {
+  display: flex;
+  position: relative;
+  gap: 20px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 4px 0;
+}
+.tktx-store .customer-stories-grid::-webkit-scrollbar { display: none; }
+.tktx-store .customer-stories-grid > .customer-story {
+  flex: 0 0 calc((100% - 20px) / 2);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 310px;
+}
+.tktx-store .customer-stories-grid > .customer-story:hover { transform: none; }
+.tktx-store .review-slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 22px;
+}
+.tktx-store .review-slider-controls[hidden] { display: none; }
+.tktx-store .review-slider-pagination,
+.tktx-store .review-slider-buttons,
+.tktx-store .review-slider-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tktx-store .review-slider-pagination { gap: 14px; }
+.tktx-store .review-slider-counter {
+  min-width: 38px;
+  font: 500 11px/1.4 TKTXMono, monospace;
+  color: #737373;
+}
+.tktx-store .review-slider-dots { gap: 0; }
+.tktx-store .review-slider-dot {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 44px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+.tktx-store .review-slider-dot::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c9c9c9;
+  transition: width .2s, background .2s;
+}
+.tktx-store .review-slider-dot[aria-current="true"]::before {
+  width: 22px;
+  border-radius: 4px;
+  background: #000;
+}
+.tktx-store .review-slider-button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #d9d9d9;
+  border-radius: 0;
+  color: #000;
+  background: #fff;
+  transition: background .2s, color .2s;
+}
+.tktx-store .review-slider-button:hover { color: #fff; background: #000; }
+.tktx-store .review-slider-button svg { width: 18px; height: 18px; }
+.tktx-store .review-slider-toggle .review-play-icon { display: none; }
+.tktx-store .review-slider-toggle[aria-pressed="true"] .review-play-icon { display: block; }
+.tktx-store .review-slider-toggle[aria-pressed="true"] .review-pause-icon { display: none; }
+.tktx-store .review-slider-controls button:focus-visible { outline: 2px solid #000; outline-offset: 3px; }
+
+/* Give tablet product cards room for their titles and buying information. */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .tktx-store .shop-grid { gap: 20px 16px; }
+  .tktx-store .shop-card { padding: 8px; }
+  .tktx-store .shop-card-body { padding: 20px 10px 12px; }
+  .tktx-store .shop-card-body h3 {
+    font-size: clamp(21px, 2.6vw, 28px);
+    line-height: 1.18;
+    min-height: 2.36em;
+    margin-bottom: 14px;
+    overflow-wrap: normal;
+  }
+  .tktx-store .shop-card-description { font-size: 12px; gap: 8px; }
+  .tktx-store .card-duration { font-size: 10px; }
+  .tktx-store .catalog-price:not(.detail-price) { font-size: 15px; gap: 6px; }
+  .tktx-store .catalog-price:not(.detail-price) del { font-size: 11px; }
+  .tktx-store .stock-label { padding: 5px 7px; font-size: 9px; }
+  .tktx-store .shop-card-bottom { gap: 8px; margin-top: 24px; }
+  .tktx-store .variant-pill { font-size: 9px; white-space: normal; }
+  .tktx-store .buy-button { padding: 9px 10px; gap: 8px; font-size: 11px; }
+}
+
+@media (max-width: 760px) {
+  .tktx-store .shop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; }
+  .tktx-store .shop-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e4e4e4;
+    box-shadow: none;
+  }
+  .tktx-store .shop-card:hover { transform: none; box-shadow: none; }
+  .tktx-store .shop-card-image { width: 100%; aspect-ratio: 1; flex: none; }
+  .tktx-store .shop-card-badge { display: none; }
+  .tktx-store .shop-card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 15px 12px 12px;
+  }
+  .tktx-store .shop-card-label {
+    font-size: clamp(8px, 1.9vw, 10px);
+    line-height: 1.6;
+    letter-spacing: .035em;
+    color: #777;
+    margin-bottom: 9px;
+  }
+  .tktx-store .shop-card-body h3 {
+    font-size: clamp(18px, 4.6vw, 25px);
+    line-height: 1.15;
+    letter-spacing: -.01em;
+    min-height: 2.3em;
+    margin-bottom: 12px;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .tktx-store .shop-card-description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 6px;
+    min-height: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .tktx-store .card-duration {
+    font-size: 10px;
+    line-height: 1.4;
+    color: #444;
+    border: 0;
+    padding: 0;
+  }
+  .tktx-store .catalog-price:not(.detail-price) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    align-content: start;
+    gap: 5px 7px;
+    margin-top: 15px;
+    min-height: 0;
+    font-size: clamp(15px, 3.7vw, 19px);
+    line-height: 1.4;
+  }
+  .tktx-store .catalog-price:not(.detail-price) del { font-size: 11px; }
+  .tktx-store .catalog-price:not(.detail-price) .stock-label {
+    flex-basis: 100%;
+    width: 100%;
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: #858585;
+    font: 10px/1.6 Arial, sans-serif;
+  }
+  .tktx-store .catalog-price:not(.detail-price) .stock-label.available { color: #28603a; }
+  .tktx-store .shop-card-bottom {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 16px;
+  }
+  .tktx-store .variant-pill {
+    align-self: flex-start;
+    color: #666;
+    font-size: 9px;
+    line-height: 1.5;
+    padding: 0;
+    white-space: normal;
+  }
+  .tktx-store .buy-button {
+    justify-content: space-between;
+    min-height: 44px;
+    padding: 10px;
+    font-size: 11px;
+    line-height: 1.25;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .tktx-store .buy-button > span { width: 20px; height: 20px; flex: none; }
+  .tktx-store .customer-stories-grid { gap: 12px; }
+  .tktx-store .customer-stories-grid > .customer-story { flex-basis: 100%; min-height: 310px; padding: 24px 22px; }
+  .tktx-store .customer-story blockquote p,
+  .tktx-store .featured-story blockquote p { font-size: clamp(21px, 5.7vw, 26px); line-height: 1.5; }
+  .tktx-store .review-slider-controls { margin-top: 16px; gap: 8px; }
+  .tktx-store .review-slider-pagination { gap: 5px; }
+  .tktx-store .review-slider-buttons { gap: 6px; }
+  .tktx-store .review-slider-dot { width: 23px; }
+}
+
+@media (max-width: 360px) {
+  .tktx-store .shop-grid { gap: 14px 10px; }
+  .tktx-store .shop-card-body { padding: 13px 9px 9px; }
+  .tktx-store .shop-card-body h3 { font-size: 17px; line-height: 1.18; min-height: 2.36em; }
+  .tktx-store .shop-card-description { font-size: 11px; }
+  .tktx-store .buy-button { font-size: 10px; padding: 9px 8px; }
+  .tktx-store .review-slider-counter { font-size: 10px; min-width: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tktx-store .review-slider-dot::before,
+  .tktx-store .review-slider-button { transition: none; }
+}

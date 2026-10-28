@@ -16,7 +16,8 @@
       "image": "assets/products/blue.webp",
       "image_source": "https://www.tktx.co/wp-content/uploads/2024/10/Blue-20-www.tktx_.co-TKTX-Numbing-Cream-Tattoo-Cream-01.webp",
       "source": "https://www.tktx.co/product/tktx-mithra-numbing-cream/?attribute_pa_strength=20-blue-classic-1-2-hours",
-      "description": "Tktx Blue is the 20% option in the TKTX\u2013Mithra numbing cream range. Supplied in a 10g tube."
+      "description": "Tktx Blue is the 20% option in the TKTX–Mithra numbing cream range. Supplied in a 10g tube.",
+      "duration": "1–2 hours"
     },
     {
       "slug": "white",
@@ -31,7 +32,8 @@
       "image": "assets/products/white.webp",
       "image_source": "https://www.tktx.co/wp-content/uploads/2024/10/White-35-www.tktx_.co-TKTX-Numbing-Cream-Tattoo-Cream-01.webp",
       "source": "https://www.tktx.co/product/tktx-mithra-numbing-cream/?attribute_pa_strength=35-white-strong-2-3-hours",
-      "description": "Tktx White is the 35% option in the TKTX\u2013Mithra numbing cream range. Supplied in a 10g tube."
+      "description": "Tktx White is the 35% option in the TKTX–Mithra numbing cream range. Supplied in a 10g tube.",
+      "duration": "2–3 hours"
     },
     {
       "slug": "gold",
@@ -46,7 +48,8 @@
       "image": "assets/products/gold.webp",
       "image_source": "https://www.tktx.co/wp-content/uploads/2024/10/Gold-38-www.tktx_.co-TKTX-Numbing-Cream-Tattoo-Cream-01.webp",
       "source": "https://www.tktx.co/product/tktx-mithra-numbing-cream/?attribute_pa_strength=38-gold-extra-strong-3-4-hours",
-      "description": "Tktx Gold is the 38% option in the TKTX\u2013Mithra numbing cream range. Supplied in a 10g tube."
+      "description": "Tktx Gold is the 38% option in the TKTX–Mithra numbing cream range. Supplied in a 10g tube.",
+      "duration": "3–4 hours"
     },
     {
       "slug": "green",
@@ -61,7 +64,8 @@
       "image": "assets/products/green.jpg",
       "image_source": "https://www.tktx.co/wp-content/uploads/2024/10/TKTX-40_-Green-EXTRA-STRONG-Numbing-Cream-TKTX-1680965408.jpg",
       "source": "https://www.tktx.co/product/tktx-mithra-numbing-cream/?attribute_pa_strength=40-green-extra-strong-3-5-hours",
-      "description": "Tktx Green is the 40% option in the TKTX\u2013Mithra numbing cream range. Supplied in a 10g tube."
+      "description": "Tktx Green is the 40% option in the TKTX–Mithra numbing cream range. Supplied in a 10g tube.",
+      "duration": "3–5 hours"
     },
     {
       "slug": "mithra",
@@ -76,7 +80,8 @@
       "image": "assets/products/mithra.jpg",
       "image_source": "https://www.tktx.co/wp-content/uploads/2024/10/TKTX-Mithra-Numbing-Cream-TKTX-68868448.jpg",
       "source": "https://www.tktx.co/product/tktx-mithra-numbing-cream/?attribute_pa_strength=45-mithra-extra-strong-3-5-5-5-hours",
-      "description": "Mithra is the 45% option in the TKTX\u2013Mithra numbing cream range. Supplied in a 10g tube."
+      "description": "Mithra is the 45% option in the TKTX–Mithra numbing cream range. Supplied in a 10g tube.",
+      "duration": "3.5–5.5 hours"
     },
     {
       "slug": "golden-butter",
@@ -91,7 +96,8 @@
       "image": "assets/products/golden-butter.webp",
       "image_source": "https://www.tktx.co/wp-content/uploads/2024/10/TKTX-AFTER-CARE-CREAM-TKTX-WWW.TKTX_.CO_.webp",
       "source": "https://www.tktx.co/product/tattoo-aftercare-golden-butter-healing/",
-      "description": "Golden Butter is the tattoo aftercare option in the TKTX collection. The 30g tube contains a shea butter based formula for skin care."
+      "description": "Golden Butter is the tattoo aftercare option in the TKTX collection. The 30g tube contains a shea butter based formula for skin care.",
+      "duration": null
     }
   ]
 }

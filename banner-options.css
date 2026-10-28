@@ -1,0 +1,10 @@
+/* Banner options 1 & 2 — photo fills the whole banner as a plain background.
+   No overlay, no fade, no mask. */
+.tktx-store .hero.banner-v1{--banner-img:url('assets/banner-option-1.jpg');--banner-pos:center center}
+.tktx-store .hero.banner-v2{--banner-img:url('assets/banner-option-2.jpg');--banner-pos:center center}
+
+.tktx-store .hero.banner-v1 .hero-image,.tktx-store .hero.banner-v2 .hero-image{
+  inset:var(--announcement-height) 0 0;background-image:var(--banner-img);background-size:cover;background-position:var(--banner-pos);background-repeat:no-repeat;animation:none}
+@media(max-width:760px){
+  .tktx-store .hero.banner-v1 .hero-image,.tktx-store .hero.banner-v2 .hero-image{inset:var(--announcement-height) 0 0}
+}

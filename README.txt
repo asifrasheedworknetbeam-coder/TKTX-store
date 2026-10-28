@@ -1,22 +1,15 @@
-TKTX WEBSITE — FINAL PACKAGE
+TKTX WEBSITE — FINAL UPDATED PACKAGE
 
-Extract TKTX-Final.zip completely and open TKTX-Final/index.html.
-For hosting, upload the contents of TKTX-Final into your website folder.
-No installation or build step is required. Keep the assets folder and all CSS
-and JavaScript files next to index.html.
+Extract this ZIP completely and open index.html.
+For hosting, upload the contents of TKTX-Website-Final to your public website folder.
+No installation or build step is required.
 
-Includes the homepage, six product detail pages, local fonts, and all images.
+Includes the homepage and 6 product detail pages, responsive styles, scripts,
+local fonts and all images used by the final website.
 
-Final updates:
-- Banner copy is left aligned and vertically centered on desktop, tablet,
-  and mobile. Short screens expand the banner to keep content readable.
-- Product cards have responsive fonts and cleaner mobile spacing.
-- Customer reviews slide on every screen size, with autoplay, arrows,
-  pagination, mobile swipe, and a pause control.
-- Autoplay pauses during interaction and respects reduced-motion settings.
-
-index.html is the main homepage. index-final.html is an alternate entry point
-with the same final responsive behavior.
+Final changes include the Green and Gold main banner, uppercase banner headline,
+product strength/duration, mobile product and benefit grids, updated section photos,
+restored image heights, redesigned customer reviews and supplied gold footer seal.
 
 This is a static HTML website. Purchase, account and checkout links open tktx.co.
 The newsletter form is a preview and does not register subscriptions.
